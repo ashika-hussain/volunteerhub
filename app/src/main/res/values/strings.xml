@@ -10,4 +10,39 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="donateTitle">For the deed</string>
+    <string name="donateSubtitle">Amount</string>
+    <string name="donateButton">Donate</string>
+    <string name="paypal">PayPal</string>
+    <string name="direct">Direct</string>
+    <string name="amount">Amount</string>
+    <string name="total">Total Amount</string>
+    <string name="totalSoFar">$%d</string>
+    <string name="reportTitle">Donations Report</string>
+    <string name="defaultAmount">00</string>
+    <string name="defaultMethod">N/A</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="action_donate">Donate</string>
+    <string name="action_report">Report</string>
+
+    <string name="action_share">Share</string>
+    <string name="action_send">Send</string>
+    <string name="group_communicate">Communicate</string>
+
+
+    <string name="action_about">Profile</string>
+    <string name="aboutus_title">Name of Person</string>
+    <string name="aboutus_message">Hi person, Welcome to your profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_button">add button</string>
+    <string name="donationsNotFound">You have not made any donations yet.</string>
+    <string name="donationError">Sorry. We are unable to process your donation at the moment</string>
+    <string name="donationDetails">Donation Details</string>
+    <string name="amt">Amount :</string>
+    <string name="payment">Payment :</string>
+    <string name="message">Message :</string>
+    <string name="upvotes">UpVotes :</string>
+
+
 </resources>
