@@ -26,7 +26,7 @@
 
     <!-- START Firebase Resources-->
     <!-- Activity with no Title -->
-    <style name="ThemeOverlay.MyNoTitleActivity" parent="Theme.DonationX">
+    <style name="ThemeOverlay.MyNoTitleActivity" parent="Theme.VolunteerHub">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -43,7 +43,7 @@
     <!-- Light EditTexts -->
     <style name="ThemeOverlay.MyLightEditText" parent="ThemeOverlay.AppCompat.Dark"/>
 
-    <style name="ThemeOverlay.MyTextDetail" parent="Theme.DonationX">
+    <style name="ThemeOverlay.MyTextDetail" parent="Theme.VolunteerHub">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fadeScrollbars">true</item>
@@ -54,12 +54,12 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="ThemeOverlay.FirebaseIcon" parent="Theme.DonationX">
+    <style name="ThemeOverlay.FirebaseIcon" parent="Theme.VolunteerHub">
         <item name="android:layout_marginTop">@dimen/icon_top_margin</item>
         <item name="android:layout_marginBottom">@dimen/icon_bottom_margin</item>
     </style>
 
-    <style name="ThemeOverlay.MyTitleText" parent="Theme.DonationX">
+    <style name="ThemeOverlay.MyTitleText" parent="Theme.VolunteerHub">
         <item name="android:gravity">center</item>
         <item name="android:textSize">30sp</item>
     </style>
