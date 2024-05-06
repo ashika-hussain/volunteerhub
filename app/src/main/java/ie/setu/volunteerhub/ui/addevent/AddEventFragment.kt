@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
@@ -26,13 +27,11 @@ import java.util.Calendar
 class AddEventFragment : Fragment() {
 
     private var _fragBinding: FragmentAddEventBinding? = null
-
-    // This property is only valid between onCreateView and onDestroyView.
     private val fragBinding get() = _fragBinding!!
     private lateinit var addEventViewModel: AddEventViewModel
     private val loggedInViewModel: LoggedInViewModel by activityViewModels()
     var liveFirebaseUser = MutableLiveData<FirebaseUser>()
-    private var datePicker: DatePicker? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,16 +40,18 @@ class AddEventFragment : Fragment() {
         _fragBinding = FragmentAddEventBinding.inflate(inflater, container, false)
         val root = fragBinding.root
 
-        datePicker = fragBinding.datePicker
+        addEventViewModel = ViewModelProvider(this)[AddEventViewModel::class.java]
 
         var selectedDate = ""
+        val simpleDatePicker = fragBinding.datePicker as DatePicker
+        val today = Calendar.getInstance()
+        simpleDatePicker.minDate = today.timeInMillis
+        simpleDatePicker.init(today.get(Calendar.YEAR), today.get(Calendar.MONTH),
+            today.get(Calendar.DAY_OF_MONTH)
 
-        addEventViewModel = ViewModelProvider(this)[AddEventViewModel::class.java]
-        datePicker?.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
-            // Format the selected date into a string
-            selectedDate = formatDate(year, monthOfYear, dayOfMonth)
-            // Do something with the selected date
-            Timber.i("SelectedDate", selectedDate)
+        ) { view, year, month, day ->
+            val month = month + 1
+            selectedDate = "$day/$month/$year"
         }
         fragBinding.saveButton.setOnClickListener {
             val userId = loggedInViewModel.liveFirebaseUser.value?.uid
@@ -69,23 +70,13 @@ class AddEventFragment : Fragment() {
                 Timber.e("Empty value")
             }
         }
-
         return root
     }
 
 
-    override fun onResume() {
-        super.onResume()
-       // addEventViewModel.getUser(loggedInViewModel.liveFirebaseUser.value?.uid!!)
-
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _fragBinding = null
-    }
-    private fun formatDate(year: Int, month: Int, day: Int): String {
-        return "$year-${month + 1}-$day" // Adjust month + 1 because months are 0-indexed
     }
 
 }
