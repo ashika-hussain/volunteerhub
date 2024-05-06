@@ -3,8 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/donateFragment">
+    app:startDestination="@id/eventFragment">
 
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="ie.setu.volunteerhub.ui.event.EventFragment"
+        android:label="Event"
+        tools:layout="@layout/fragment_event">
+        <action
+            android:id="@+id/action_eventFragment_to_addeventFragment"
+            app:destination="@id/addeventFragment" />
+    </fragment>
     <fragment
         android:id="@+id/donateFragment"
         android:name="ie.setu.volunteerhub.ui.donate.DonateFragment"
@@ -34,15 +43,32 @@
         android:id="@+id/aboutFragment"
         android:name="ie.setu.volunteerhub.ui.about.AboutFragment"
         android:label="@string/action_about"
-        tools:layout="@layout/fragment_about" />
+        tools:layout="@layout/fragment_about" >
+        <action
+            android:id="@+id/action_aboutFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="ie.setu.volunteerhub.ui.editprofile.EditProfileFragment"
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_edit_profile" >
+    </fragment>
     <fragment
         android:id="@+id/donationDetailFragment"
         android:name="ie.setu.volunteerhub.ui.detail.DonationDetailFragment"
-        android:label="fragment_donation_detail"
+        android:label="Donation detail"
         tools:layout="@layout/fragment_donation_detail" >
         <argument
             android:name="donationId"
-            app:argType="long" />
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addeventFragment"
+        android:name="ie.setu.volunteerhub.ui.addevent.AddEventFragment"
+        android:label="Add Event"
+        tools:layout="@layout/fragment_add_event" >
     </fragment>
 
 </navigation>

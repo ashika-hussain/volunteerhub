@@ -4,6 +4,10 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/eventFragment"
+            android:icon="@drawable/baseline_dashboard_24"
+            android:title="Event" />
+        <item
             android:id="@+id/donateFragment"
             android:icon="@drawable/ic_menu_donate"
             android:title="@string/action_donate" />
@@ -15,17 +19,15 @@
             android:id="@+id/aboutFragment"
             android:icon="@drawable/ic_menu_aboutus"
             android:title="@string/action_about" />
+
     </group>
     <item android:title="@string/group_communicate">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="@string/action_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/action_send" />
+                android:title="@string/action_share"
+                android:onClick="shareApp"/>
         </menu>
     </item>
     <item android:title="@string/access_control">
@@ -33,6 +35,7 @@
             <item
                 android:id="@+id/nav_sign_out"
                 android:icon="@android:drawable/ic_menu_revert"
+                android:onClick="signOut"
                 android:title="@string/sign_out" />
         </menu>
     </item>

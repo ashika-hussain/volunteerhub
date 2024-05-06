@@ -4,7 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
-    alias(libs.plugins.googleGmsGoogleServices)
+    id("com.google.gms.google-services")
 
 }
 
@@ -61,9 +61,20 @@ dependencies {
     implementation(libs.firebase.database.ktx)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
+    implementation(libs.firebase.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.9.1")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation ("com.squareup.picasso:picasso:2.71828")
+    implementation ("com.makeramen:roundedimageview:2.3.0")
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+    implementation("com.google.firebase:firebase-analytics")
+
 
 }
