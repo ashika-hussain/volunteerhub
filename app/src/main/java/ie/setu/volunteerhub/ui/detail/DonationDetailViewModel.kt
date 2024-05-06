@@ -3,16 +3,40 @@ package ie.setu.volunteerhub.ui.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ie.setu.volunteerhub.models.DonationManager
+import ie.setu.volunteerhub.firebase.FirebaseDBManager
 import ie.setu.volunteerhub.models.DonationModel
+import timber.log.Timber
 
 class DonationDetailViewModel : ViewModel() {
-    private val donation = MutableLiveData<DonationModel>()
+        private val donation = MutableLiveData<DonationModel>()
 
-    val observableDonation: LiveData<DonationModel>
-        get() = donation
+        var observableDonation: LiveData<DonationModel>
+            get() = donation
+            set(value) {
+                donation.value = value.value
+            }
 
-    fun getDonation(id: Long) {
-        donation.value = DonationManager.findById(id)
+        fun getDonation(userid: String, id: String) {
+            try {
+                //DonationManager.findById(email, id, donation)
+                FirebaseDBManager.findById(userid, id, donation)
+                Timber.i(
+                    "Detail getDonation() Success : ${
+                        donation.value.toString()
+                    }"
+                )
+            } catch (e: Exception) {
+                Timber.i("Detail getDonation() Error : $e.message")
+            }
+        }
+
+        fun updateDonation(userid: String, id: String, donation: DonationModel) {
+            try {
+                //DonationManager.update(email, id, donation)
+                FirebaseDBManager.update(userid, id, donation)
+                Timber.i("Detail update() Success : $donation")
+            } catch (e: Exception) {
+                Timber.i("Detail update() Error : $e.message")
+            }
+        }
     }
-}
