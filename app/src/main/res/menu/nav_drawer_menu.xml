@@ -6,7 +6,7 @@
         <item
             android:id="@+id/eventFragment"
             android:icon="@drawable/baseline_dashboard_24"
-            android:title="Event" />
+            android:title="@string/event" />
         <item
             android:id="@+id/donateFragment"
             android:icon="@drawable/ic_menu_donate"

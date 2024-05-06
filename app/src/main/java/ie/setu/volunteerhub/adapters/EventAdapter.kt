@@ -1,25 +1,20 @@
 package ie.setu.volunteerhub.adapters
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import ie.setu.volunteerhub.R
-import ie.setu.volunteerhub.databinding.ItemEventBinding
-import ie.setu.volunteerhub.models.DonationModel
 import ie.setu.volunteerhub.models.EventModel
-import ie.setu.volunteerhub.utils.customTransformation
+import timber.log.Timber
 
-class EventAdapter(private val events: List<EventModel>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventAdapter(private var events: List<EventModel>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameTextView: TextView = itemView.findViewById(R.id.editName)
-        val detailsTextView: TextView = itemView.findViewById(R.id.Details)
-        val locationTextView: TextView = itemView.findViewById(R.id.Location)
-        val dateTextView: TextView = itemView.findViewById(R.id.datePicker)
+        val nameTextView: TextView = itemView.findViewById(R.id.event_name)
+        val locationTextView: TextView = itemView.findViewById(R.id.event_location)
+        val detailsTextView: TextView = itemView.findViewById(R.id.event_details)
+        val dateTextView: TextView = itemView.findViewById(R.id.event_date)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -28,12 +23,19 @@ class EventAdapter(private val events: List<EventModel>) : RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
+        Timber.i("In adapter $events")
         val currentEvent = events[position]
         holder.nameTextView.text = currentEvent.name
         holder.detailsTextView.text = currentEvent.details
         holder.locationTextView.text = currentEvent.location
-        holder.dateTextView.text = currentEvent.date.toString()
+        holder.dateTextView.text=currentEvent.date
     }
+
+    fun updateEvents(filteredEvents: List<EventModel>) {
+        events = filteredEvents
+        notifyDataSetChanged()
+    }
+
 
     override fun getItemCount(): Int {
         return events.size

@@ -120,6 +120,8 @@
     <string name="details">Details</string>
     <string name="title">Title</string>
     <string name="upcoming_events">Upcoming Events</string>
+    <string name="there_are_no_events">There are no events</string>
+    <string name="event">Event</string>
 
 
 </resources>
